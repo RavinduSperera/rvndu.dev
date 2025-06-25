@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ravindu Perera - Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/f7afb1ff73.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-card: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #64748b;
+      --text-muted: #94a3b8;
+      --accent-primary: #3b82f6;
+      --accent-secondary: #1d4ed8;
+      --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #1e293b;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #64748b;
+      --accent-primary: #60a5fa;
+      --accent-secondary: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --border-color: #334155;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-primary);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .theme-toggle {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .theme-toggle:hover {
+      background: var(--bg-secondary);
+      transform: scale(1.05);
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      margin-right: 1rem;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem;
+      z-index: 999;
+      box-shadow: var(--shadow-md);
+    }
+
+    .mobile-nav.active {
+      display: block;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    .mobile-nav-links a:hover {
+      color: var(--accent-primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 8rem 0 6rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 2rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-secondary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Section Styles */
+    section {
+      padding: 6rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border-radius: 1rem;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      display: block;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent-gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .service-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Portfolio Section */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .portfolio-card {
+      background: var(--bg-card);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .portfolio-hidden {
+      display: none;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .portfolio-image {
+      height: 200px;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .portfolio-card:hover .portfolio-image::before {
+      left: 100%;
+    }
+
+    .portfolio-content {
+      padding: 2rem;
+    }
+
+    .portfolio-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .portfolio-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .portfolio-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .portfolio-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .portfolio-link {
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .portfolio-link:hover {
+      color: var(--accent-secondary);
+    }
+
+    .see-more-btn {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .see-more-btn button {
+      background: var(--bg-card);
+      color: var(--accent-primary);
+      border: 1px solid var(--border-color);
+      padding: 0.75rem 2rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .see-more-btn button:hover {
+      background: var(--bg-secondary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent-primary);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--bg-card);
+      border-radius: 50%;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--accent-primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 2rem;
+      color: var(--text-muted);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .header-content {
+        justify-content: flex-start;
+      }
+
+      .logo {
+        margin-right: auto;
+      }
+
+      .hero {
+        padding: 6rem 0 4rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .portfolio-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 4rem 0;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-on-scroll {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <button class="hamburger" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">Rvndu.Dev</div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+          </ul>
+        </nav>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <i class="fas fa-sun"></i>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav">
+      <ul class="mobile-nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section id="hero" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Full-Stack Developer</h1>
+        <p class="hero-subtitle">Building Digital Experiences</p>
+        <p class="hero-description">
+          I'm a passionate developer specializing in creating modern, responsive web applications 
+          with focus on performance, user experience, and clean code architecture.
+        </p>
+        <div class="cta-buttons">
+          <a href="#portfolio" class="btn btn-primary">
+            <i class="fas fa-rocket"></i>
+            View My Work
+          </a>
+          <a href="#about" class="btn btn-secondary">
+            <i class="fas fa-user"></i>
+            About Me
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">
+          Passionate about creating innovative solutions and bringing ideas to life through code
+        </p>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            I'm a dedicated full-stack developer with a strong foundation in modern web technologies. 
+            My journey in software development has equipped me with expertise in both frontend and 
+            backend development, allowing me to create comprehensive digital solutions.
+          </p>
+          <p>
+            I believe in writing clean, maintainable code and staying updated with the latest 
+            industry trends and best practices. My goal is to create applications that not only 
+            function flawlessly but also provide exceptional user experiences.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-item">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">3+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Technologies</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Client Satisfaction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Services</h2>
+        <p class="section-subtitle">
+          Comprehensive development services to bring your digital vision to life
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3 class="service-title">Web Development</h3>
+          <p class="service-description">
+            Full-stack web development using modern frameworks and technologies. 
+            From responsive frontends to robust backend systems.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3 class="service-title">Mobile Applications</h3>
+          <p class="service-description">
+            Cross-platform mobile app development with native performance 
+            and seamless user experiences across all devices.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3 class="service-title">UI/UX Design</h3>
+          <p class="service-description">
+            User-centered design approach creating intuitive interfaces 
+            that enhance user engagement and satisfaction.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+          A showcase of my recent work and technical expertise
+        </p>
+      </div>
+      <div class="portfolio-grid">
+        <!-- First 3 projects (visible by default) -->
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Uber Shopping System</h3>
+            <p class="portfolio-description">
+              A comprehensive e-commerce platform with advanced features including 
+              real-time inventory management, secure payment processing, and responsive design.
+            </p>
+            <div class="portfolio-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">Express</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="https://github.com/RavinduSperera/Uber-Shopping-System" class="portfolio-link">
+                <i class="fab fa-github"></i>
+                Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <i class="fas fa-bus"></i>
+          </div>
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Bus Reservation System</h3>
+            <p class="portfolio-description">
+              Object-oriented bus ticket booking system with real-time seat availability, 
+              route management, and secure user authentication.
+            </p>
+            <div class="portfolio-tech">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">JavaFX</span>
+              <span class="tech-tag">OOP</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="https://github.com/RavinduSperera/Onlien-Bus-Reservation-System" class="portfolio-link">
+                <i class="fab fa-github"></i>
+                Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">TO-DO Mobile App</h3>
+            <p class="portfolio-description">
+              Feature-rich mobile application for task management with intuitive UI, 
+              offline functionality, and cross-platform compatibility.
+            </p>
+            <div class="portfolio-tech">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Dart</span>
+              <span class="tech-tag">SQLite</span>
+              <span class="tech-tag">Mobile</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="https://github.com/RavinduSperera/TO-DO-mobile-app-MAD_LAB_EXAM_04-" class="portfolio-link">
+                <i class="fab fa-github"></i>
+                Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional projects (hidden by default) -->
+        <div class="portfolio-card portfolio-hidden">
+          <div class="portfolio-image">
+            <i class="fas fa-blog"></i>
+          </div>
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Personal Blog Platform</h3>
+            <p class="portfolio-description">
+              A full-featured blogging platform with markdown support, user authentication,
+              and comment system.
+            </p>
+            <div class="portfolio-tech">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">GraphQL</span>
+              <span class="tech-tag">Prisma</span>
+              <span class="tech-tag">PostgreSQL</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="#" class="portfolio-link">
+                <i class="fab fa-github"></i>
+                Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card portfolio-hidden">
+          <div class="portfolio-image">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Analytics Dashboard</h3>
+            <p class="portfolio-description">
+              Real-time data visualization dashboard with interactive charts and
+              customizable reporting features.
+            </p>
+            <div class="portfolio-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">D3.js</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">Redux</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="#" class="portfolio-link">
+                <i class="fab fa-github"></i>
+                Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card portfolio-hidden">
+          <div class="portfolio-image">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">AI Chatbot</h3>
+            <p class="portfolio-description">
+              Natural language processing chatbot with machine learning capabilities
+              and multi-platform integration.
+            </p>
+            <div class="portfolio-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">NLP</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="#" class="portfolio-link">
+                <i class="fab fa-github"></i>
+                Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see-more-btn">
+        <button id="seeMoreBtn">
+          <i class="fas fa-chevron-down"></i>
+          See More Projects
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>Let's work together on your next project</p>
+          <p>ravindu@example.com</p>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Me</h3>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ravindu Perera. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Function to set theme
+    function setTheme(isDark) {
+      const html = document.documentElement;
+      html.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      themeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // Load saved theme on page load
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme === 'dark');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+        // Close mobile menu when a link is clicked
+        mobileNav.classList.remove('active');
+        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'var(--bg-primary)';
+        header.style.boxShadow = 'var(--shadow-md)';
+      } else {
+        header.style.background = 'var(--bg-primary)';
+        header.style.boxShadow = 'none';
+      }
+    });
+
+    // Hamburger menu functionality
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+      if (mobileNav.classList.contains('active')) {
+        hamburger.innerHTML = '<i class="fas fa-times"></i>';
+      } else {
+        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+      }
+    });
+
+    // See More button functionality
+    const seeMoreBtn = document.getElementById('seeMoreBtn');
+    const hiddenProjects = document.querySelectorAll('.portfolio-hidden');
+    let showingAll = false;
+
+    seeMoreBtn.addEventListener('click', () => {
+      hiddenProjects.forEach(project => {
+        project.classList.toggle('portfolio-hidden');
+      });
+
+      showingAll = !showingAll;
+      
+      if (showingAll) {
+        seeMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> Show Less';
+      } else {
+        seeMoreBtn.innerHTML = '<i class="fas fa-chevron-down"></i> See More Projects';
+      }
+
+      // Smooth scroll to maintain position
+      setTimeout(() => {
+        seeMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    });
+  </script>
+</body>
+</html>

@@ -307,48 +307,67 @@
     /* About Section */
     .about-content {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      grid-template-columns: 1fr;
+      gap: 2rem;
       align-items: center;
+      text-align: center;
     }
 
     .about-text {
       font-size: 1.1rem;
       color: var(--text-secondary);
       line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .about-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+    .skills-container {
+      margin: 3rem 0;
+    }
+
+    .skills-icons {
+      display: flex;
+      justify-content: center;
       gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
     }
 
-    .stat-item {
-      text-align: center;
-      padding: 1.5rem;
-      background: var(--bg-card);
-      border-radius: 1rem;
-      border: 1px solid var(--border-color);
+    .skill-icon {
+      font-size: 3rem;
+      color: var(--text-secondary);
       transition: all 0.3s ease;
     }
 
-    .stat-item:hover {
-      transform: translateY(-5px);
+    .skill-icon:hover {
+      color: var(--accent-primary);
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 2rem;
+      padding: 0.75rem 2rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: var(--accent-primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+    }
+
+    .download-btn:hover {
+      background: var(--accent-secondary);
+      transform: translateY(-2px);
       box-shadow: var(--shadow-lg);
     }
 
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent-primary);
-      display: block;
-    }
-
-    .stat-label {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
+    .download-btn i {
+      margin-right: 0.5rem;
     }
 
     /* Services Section */
@@ -626,10 +645,6 @@
         gap: 2rem;
       }
 
-      .about-stats {
-        grid-template-columns: 1fr;
-      }
-
       .cta-buttons {
         flex-direction: column;
         align-items: center;
@@ -642,6 +657,14 @@
 
       section {
         padding: 4rem 0;
+      }
+
+      .skills-icons {
+        gap: 1.5rem;
+      }
+
+      .skill-icon {
+        font-size: 2.5rem;
       }
     }
 
@@ -661,9 +684,6 @@
       animation: fadeInUp 0.6s ease forwards;
     }
   </style>
-  <!-- styles end -->
-
-  <!-- html begins -->
 </head>
 <body>
   <header>
@@ -723,39 +743,36 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">About Me</h2>
-        <p class="section-subtitle" >
+        <p class="section-subtitle">
           Transforming ideas into beautiful, intuitive user interfaces through clean, functional code
         </p>
       </div>
       <div class="about-content">
         <div class="about-text">
           <p>
-            I'm a dedicated full-stack developer with a strong foundation in modern web technologies. 
-            My journey in software development has equipped me with expertise in both frontend and 
-            backend development, allowing me to create comprehensive digital solutions.
+            I'm a passionate frontend developer with expertise in modern web technologies. 
+            My focus is on creating responsive, accessible, and performant user interfaces 
+            that deliver exceptional user experiences.
           </p>
           <p>
-            I believe in writing clean, maintainable code and staying updated with the latest 
-            industry trends and best practices. My goal is to create applications that not only 
-            function flawlessly but also provide exceptional user experiences.
+            With a strong foundation in JavaScript and its ecosystem, I specialize in building 
+            applications with React, TypeScript, and modern CSS. I'm also experienced in UI/UX 
+            design principles and creating design systems with Figma.
           </p>
-        </div>
-        <div class="about-stats">
-          <div class="stat-item">
-            <span class="stat-number">15+</span>
-            <span class="stat-label">Projects Completed</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">3+</span>
-            <span class="stat-label">Years Experience</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">10+</span>
-            <span class="stat-label">Technologies</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">100%</span>
-            <span class="stat-label">Client Satisfaction</span>
+          
+          <div class="skills-container">
+            <div class="skills-icons">
+              <i class="fab fa-react skill-icon" title="React"></i>
+              <i class="fab fa-js skill-icon" title="JavaScript"></i>
+              <i class="fab fa-typescript skill-icon" title="TypeScript"></i>
+              <i class="fab fa-figma skill-icon" title="Figma"></i>
+              <i class="fab fa-flutter skill-icon" title="Flutter"></i>
+            </div>
+            
+            <button class="download-btn" id="downloadCv">
+              <i class="fas fa-download"></i>
+              Download My CV
+            </button>
           </div>
         </div>
       </div>
@@ -1000,7 +1017,6 @@
     </div>
   </footer>
 
-  <!-- some functions over here  -->
   <script>
     // Theme toggle functionality
     const themeToggle = document.querySelector('.theme-toggle');
@@ -1091,9 +1107,21 @@
         seeMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 100);
     });
+
+    // Download CV button functionality
+    const downloadCvBtn = document.getElementById('downloadCv');
+    downloadCvBtn.addEventListener('click', () => {
+      // Create a temporary link element
+      const link = document.createElement('a');
+      link.href = '#'; // Replace with actual CV URL
+      link.download = 'Ravindu_Perera_CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Show a message (you can replace this with actual download logic)
+      alert('Downloading CV... (This is a demo. In a real implementation, this would download your CV file)');
+    });
   </script>
-  <!-- function part ends here  -->
-   
 </body>
 </html>
-<!-- html ends -->

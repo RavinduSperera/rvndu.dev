@@ -1035,7 +1035,10 @@
         if (vantaEffect) {
           vantaEffect.destroy();
         }
-        
+
+        // Detect current theme
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
         vantaEffect = VANTA.NET({
           el: "#hero",
           mouseControls: true,
@@ -1045,13 +1048,14 @@
           minWidth: 200.00,
           scale: 1.00,
           scaleMobile: 1.00,
-          color: 0x7e7e7e,
-          backgroundColor: 0x0f172a,
-          points: 15.00, // amount of points
+          color: isDark ? 0x7e7e7e : 0x0a0a0a,         // net color (blackish on light theme)
+          backgroundColor: isDark ? 0x0f172a : 0xffffff, // background color changes
+          points: 15.00,
           spacing: 17.00
         });
       }
-    }
+  }
+
 
     // Initialize Vanta.js when the page loads
     document.addEventListener('DOMContentLoaded', function() {

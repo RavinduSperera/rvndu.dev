@@ -316,7 +316,7 @@
     .about-content {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 1rem;
       align-items: center;
       text-align: center;
     }
@@ -502,6 +502,7 @@
       color: var(--text-secondary);
       margin-bottom: 1.5rem;
       line-height: 1.6;
+      text-align: justify;
     }
 
     .portfolio-tech {
@@ -648,11 +649,23 @@
       .hero {
         padding: 6rem 0 4rem;
         min-height: 80vh;
+        margin-top: 4rem;
+      }
+
+      .hero-description {
+        text-align: justify;
+        margin: 2rem;
       }
 
       .about-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1rem;
+      }
+
+      .about-text p {
+        text-align: justify;
+        margin-left: 2rem;
+        margin-right: 2rem;
       }
 
       .cta-buttons {
@@ -752,9 +765,6 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">About Me</h2>
-        <p class="section-subtitle">
-          Transforming ideas into beautiful, intuitive user interfaces through clean, functional code
-        </p>
       </div>
       <div class="about-content">
         <div class="about-text">
@@ -841,7 +851,7 @@
         <!-- First 3 projects (visible by default) -->
         <div class="portfolio-card">
           <div class="portfolio-image">
-            <img src="images/bubble.png" style="width: 25rem; height: 20rem;"> <!--added mockup here-->
+            <img src="images/bubble.png" style="width: 30rem; height: 20rem;"> <!--added mockup here-->
           </div>
           <div class="portfolio-content">
             <h3 class="portfolio-title">Property Buy & Sell Web App</h3>
@@ -862,7 +872,7 @@
 
         <div class="portfolio-card">
           <div class="portfolio-image">
-            <img src="images/travel_app.png" style="width: 25rem; height: 20rem;"> <!--added mockup here-->
+            <img src="images/travel_app.png" style="width: 30rem; height: 20rem;"> <!--added mockup here-->
           </div>
           <div class="portfolio-content">
             <h3 class="portfolio-title">Trip Planner Mobile App</h3>
@@ -886,7 +896,7 @@
 
         <div class="portfolio-card">
           <div class="portfolio-image">
-            <img src="images/Olee.png" style="width: 25rem; height: 20rem;">
+            <img src="images/Olee.png" style="width: 30rem; height: 20rem;">
           </div>
           <div class="portfolio-content">
             <h3 class="portfolio-title">Olee Officail site Redesign</h3>
@@ -911,12 +921,12 @@
         <!-- Additional projects (hidden by default) -->
         <div class="portfolio-card portfolio-hidden">
           <div class="portfolio-image">
-            <i class="fas fa-ban"></i>
+            <img src="images/lego.png" style="width: 30rem; height: 20rem;">
           </div>
           <div class="portfolio-content">
-            <h3 class="portfolio-title">Upcomming Project 1</h3>
+            <h3 class="portfolio-title">Vehicle Rental App</h3>
             <p class="portfolio-description">
-              Sorry!, not uploaded yet.
+              This mobile application is designed to help tourists visiting Sri Lanka easily find and rent vehicles during their stay. It provides a simple, user-friendly interface where users can browse available cars, vans, bikes, and tuk-tuks listed by local owners. With features such as advanced search filters, vehicle details, location previews, and directtion.
             </p>
             <!-- <div class="portfolio-tech">
               <span class="tech-tag">Next.js</span>
@@ -924,12 +934,12 @@
               <span class="tech-tag">Prisma</span>
               <span class="tech-tag">PostgreSQL</span>
             </div> -->
-            <!-- <div class="portfolio-links">
-              <a href="#" class="portfolio-link">
+            <div class="portfolio-links">
+              <a href="https://github.com/RavinduSperera/lego-car-rental-app-sri-lanka.git" class="portfolio-link">
                 <i class="fab fa-github"></i>
-                Source Code
+                Source Code, prototype & APK 
               </a>
-            </div> -->
+            </div>
           </div>
         </div>
 

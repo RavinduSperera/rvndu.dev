@@ -689,6 +689,10 @@
       .skill-icon {
         font-size: 2.5rem;
       }
+
+      .footer-bottom p {
+        font-size: small;
+      }
     }
 
     /* Animations */
@@ -715,7 +719,7 @@
         <button class="hamburger" aria-label="Menu">
           <i class="fas fa-bars"></i>
         </button>
-        <div class="logo">Rvndu.Dev</div>
+        <div class="logo">Rvndu.</div>
         <nav>
           <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
@@ -742,7 +746,7 @@
   <section id="hero" class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1 class="hero-title">UI Designer & Frontend Developer</h1>
+        <h1 class="hero-title">UI/UX Designer & Developer</h1>
         <p class="hero-subtitle">Design Digital Experiences</p>
         <p class="hero-description">
           As a passionate design enthusiast, I focus on crafting visually appealing and intuitive interfaces while bringing them to life through responsive frontend development. I enjoy combining aesthetics, usability, and performance in every project I create.
@@ -811,7 +815,7 @@
           </div>
           <h3 class="service-title">Web Development</h3>
           <p class="service-description">
-            Full-stack web development using modern frameworks and technologies. 
+            Frontend web development using modern frameworks and technologies. 
             From responsive frontends to robust backend systems.
           </p>
         </div>
@@ -1007,7 +1011,7 @@
         <div class="footer-section">
           <h3>Contact</h3>
           <p>Let's work together on your next project</p>
-          <p>sathsara360@gmail.com</p>
+          <p style="opacity: 0.7; cursor: pointer;">sathsara360@gmail.com</p>
         </div>
         <div class="footer-section">
           <h3>Follow Me</h3>
@@ -1020,7 +1024,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Ravindu Perera. All rights reserved.</p>
+        <p>&copy; 2024 - <span id="currentYear"></span> | Ravindu Perera | All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -1176,6 +1180,9 @@
         vantaEffect.resize();
       }
     });
+
+    // updating year - footer section
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

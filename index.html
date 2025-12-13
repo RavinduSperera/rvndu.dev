@@ -132,19 +132,56 @@
     }
 
     .theme-toggle {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      color: var(--text-primary);
-      padding: 0.5rem;
-      border-radius: 0.5rem;
+      position: relative;
+      width: 60px;
+      height: 30px;
+      background: var(--border-color);
+      border-radius: 15px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 1.1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      padding: 0;
+      overflow: hidden;
     }
 
     .theme-toggle:hover {
-      background: var(--bg-secondary);
       transform: scale(1.05);
+      box-shadow: var(--shadow-md);
+    }
+
+    .theme-toggle-slider {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: white;
+      border-radius: 50%;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      left: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-toggle-slider i {
+      font-size: 0.6rem;
+      color: #f59e0b;
+    }
+
+    [data-theme="dark"] .theme-toggle {
+      background: #334155;
+      border-color: #475569;
+    }
+
+    [data-theme="dark"] .theme-toggle-slider {
+      left: 30px;
+      background: #1e293b;
+    }
+
+    [data-theme="dark"] .theme-toggle-slider i {
+      color: #60a5fa;
     }
 
     /* Hamburger Menu */
@@ -769,9 +806,11 @@
             <li><a href="#portfolio">Portfolio</a></li>
           </ul>
         </nav>
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <i class="fas fa-sun"></i>
-        </button>
+        <div class="theme-toggle" role="button" aria-label="Toggle theme" tabindex="0">
+          <div class="theme-toggle-slider">
+            <i class="fas fa-circle"></i>
+          </div>
+        </div>
       </div>
     </div>
     <div class="mobile-nav">
@@ -1130,12 +1169,13 @@
 
     // Reinitialize Vanta.js when theme changes
     const themeToggle = document.querySelector('.theme-toggle');
+    const themeIcon = themeToggle.querySelector('.theme-toggle-slider i');
 
     // Function to set theme
     function setTheme(isDark) {
       const html = document.documentElement;
       html.setAttribute('data-theme', isDark ? 'dark' : 'light');
-      themeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+      themeIcon.className = isDark ? 'fas fa-circle' : 'fas fa-circle';
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
       // Reinitialize Vanta.js after theme change
@@ -1144,7 +1184,6 @@
 
     // Load saved theme on page load
     const savedTheme = localStorage.getItem('theme');
-    const themeIcon = themeToggle.querySelector('i');
     if (savedTheme) {
       setTheme(savedTheme === 'dark');
     }
@@ -1153,6 +1192,16 @@
       const html = document.documentElement;
       const isDark = html.getAttribute('data-theme') === 'dark';
       setTheme(!isDark);
+    });
+
+    // Add keyboard support for the toggle
+    themeToggle.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const html = document.documentElement;
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        setTheme(!isDark);
+      }
     });
 
     // Smooth scrolling for navigation links

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +8,8 @@
   <link rel="icon" type="images/jpeg" href="images/favicon.jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <script src="https://kit.fontawesome.com/f7afb1ff73.js" crossorigin="anonymous"></script>
   <!-- Add Vanta.js scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
@@ -329,6 +331,19 @@
       margin: 0 auto;
     }
 
+    .about-text a {
+      text-decoration: none;
+      color: orangered;
+    }
+
+    .about-text a:hover {
+      color: rgb(255, 114, 63);
+    }
+
+    .about-text span {
+      color: orangered;
+    }
+
     .skills-container {
       margin: 3rem 0;
     }
@@ -619,7 +634,8 @@
       background: var(--accent-primary);
       color: white;
       transform: translateY(-2px);
-      transition: 300ms; /* add transition time to make the effect smoother */
+      transition: 300ms;
+      /* add transition time to make the effect smoother */
     }
 
     .footer-bottom {
@@ -701,6 +717,7 @@
         opacity: 0;
         transform: translateY(30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -711,7 +728,9 @@
       animation: fadeInUp 0.6s ease forwards;
     }
   </style>
+
 </head>
+
 <body>
   <header>
     <div class="container">
@@ -746,10 +765,12 @@
   <section id="hero" class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1 class="hero-title">UI/UX Designer & Developer</h1>
+        <h1 class="hero-title">UI/UX Engineer</h1>
         <p class="hero-subtitle">Design Digital Experiences</p>
         <p class="hero-description">
-          As a passionate design enthusiast, I focus on crafting visually appealing and intuitive interfaces while bringing them to life through responsive frontend development. I enjoy combining aesthetics, usability, and performance in every project I create.
+          As a passionate design enthusiast, I focus on crafting visually appealing and intuitive interfaces while
+          bringing them to life through responsive frontend development. I enjoy combining aesthetics, usability, and
+          performance in every project I create.
         </p>
         <div class="cta-buttons">
           <a href="#portfolio" class="btn btn-primary">
@@ -773,14 +794,21 @@
       <div class="about-content">
         <div class="about-text">
           <p>
-            I am an undergraduate at SLIIT pursuing a BSc in Information Technology with a strong passion for UI/UX design and frontend development. My academic journey and project experience have allowed me to craft visually appealing, user-centered interfaces that balance creativity and functionality. I enjoy transforming ideas into engaging digital experiences using thoughtful design principles and modern technologies. A quick learner and collaborative team player, I’m eager to refine my design expertise and contribute to creating meaningful, user-driven products in the tech industry.
+            I am an undergraduate at SLIIT pursuing a BSc. in Information Technology with a strong passion for UI/UX
+            design and frontend development. Currently I work as a UI/UX Engineer Intern <span>@<a
+                href="https://creavint.com/">Creavint</a></span>. My
+            academic journey and project experience have allowed me to craft
+            visually appealing, user-centered interfaces that balance creativity and functionality. I enjoy transforming
+            ideas into engaging digital experiences using thoughtful design principles and modern technologies. A quick
+            learner and collaborative team player, I’m eager to refine my design expertise and contribute to creating
+            meaningful, user-driven products in the tech industry.
           </p>
           <!-- <p>
             With a strong foundation in JavaScript and its ecosystem, I specialize in building 
             applications with React, TypeScript, and modern CSS. I'm also experienced in UI/UX 
             design principles and creating design systems with Figma.
           </p> -->
-          
+
           <div class="skills-container">
             <div class="skills-icons">
               <i class="fab fa-react skill-icon" title="React"></i>
@@ -789,7 +817,7 @@
               <i class="fab fa-figma skill-icon" title="Figma"></i>
               <i class="fab fa-flutter skill-icon" title="Flutter"></i>
             </div>
-            
+
             <button class="download-btn" id="downloadCv">
               <i class="fas fa-download"></i>
               Download My CV
@@ -815,7 +843,7 @@
           </div>
           <h3 class="service-title">Web Development</h3>
           <p class="service-description">
-            Frontend web development using modern frameworks and technologies. 
+            Frontend web development using modern frameworks and technologies.
             From responsive frontends to robust backend systems.
           </p>
         </div>
@@ -825,7 +853,7 @@
           </div>
           <h3 class="service-title">Mobile Applications</h3>
           <p class="service-description">
-            Cross-platform mobile app development with native performance 
+            Cross-platform mobile app development with native performance
             and seamless user experiences across all devices.
           </p>
         </div>
@@ -835,7 +863,7 @@
           </div>
           <h3 class="service-title">UI/UX Design</h3>
           <p class="service-description">
-            User-centered design approach creating intuitive interfaces 
+            User-centered design approach creating intuitive interfaces
             that enhance user engagement and satisfaction.
           </p>
         </div>
@@ -860,13 +888,15 @@
           <div class="portfolio-content">
             <h3 class="portfolio-title">Property Buy & Sell Web App</h3>
             <p class="portfolio-description">
-              A clean, modern real estate interface that helps users search, explore, and connect with property listings using intuitive navigation and vibrant blue accents.
+              A clean, modern real estate interface that helps users search, explore, and connect with property listings
+              using intuitive navigation and vibrant blue accents.
             </p>
             <!-- <div class="portfolio-tech">
               <span class="tech-tag">Figma</span>
             </div> -->
             <div class="portfolio-links">
-              <a href="https://www.figma.com/proto/Trni7c8uwE3fdpsXO6CU0o/practice---1?node-id=5-3&t=9cty9NwxvTdcTw4x-1&scaling=scale-down-width&content-scaling=fixed" class="portfolio-link">
+              <a href="https://www.figma.com/proto/Trni7c8uwE3fdpsXO6CU0o/practice---1?node-id=5-3&t=9cty9NwxvTdcTw4x-1&scaling=scale-down-width&content-scaling=fixed"
+                class="portfolio-link">
                 <i class="fab fa-figma"></i>
                 Prototype
               </a>
@@ -881,7 +911,8 @@
           <div class="portfolio-content">
             <h3 class="portfolio-title">Trip Planner Mobile App</h3>
             <p class="portfolio-description">
-              A minimalist travel companion app that helps users discover destinations and navigate using an elegant blue gradient theme and friendly visuals. This still in under design phase.
+              A minimalist travel companion app that helps users discover destinations and navigate using an elegant
+              blue gradient theme and friendly visuals. This still in under design phase.
             </p>
             <!-- <div class="portfolio-tech">
               <span class="tech-tag">Java</span>
@@ -890,7 +921,8 @@
               <span class="tech-tag">OOP</span>
             </div> -->
             <div class="portfolio-links">
-              <a href="https://www.figma.com/proto/Trni7c8uwE3fdpsXO6CU0o/practice---1?node-id=77-618&t=9cty9NwxvTdcTw4x-1" class="portfolio-link">
+              <a href="https://www.figma.com/proto/Trni7c8uwE3fdpsXO6CU0o/practice---1?node-id=77-618&t=9cty9NwxvTdcTw4x-1"
+                class="portfolio-link">
                 <i class="fab fa-figma"></i>
                 Prototype
               </a>
@@ -905,7 +937,9 @@
           <div class="portfolio-content">
             <h3 class="portfolio-title">Olee Officail site Redesign</h3>
             <p class="portfolio-description">
-              A bold, modern landing page for an AI-innovator, featuring a dark-to-light gradient backdrop, crisp typography, and clear sections describing “Visioning → Thinking → Creating → Automating” to reflect the company’s end-to-end AI solution pipeline.
+              A bold, modern landing page for an AI-innovator, featuring a dark-to-light gradient backdrop, crisp
+              typography, and clear sections describing “Visioning → Thinking → Creating → Automating” to reflect the
+              company’s end-to-end AI solution pipeline.
             </p>
             <!-- <div class="portfolio-tech">
               <span class="tech-tag">Flutter</span>
@@ -914,7 +948,8 @@
               <span class="tech-tag">Mobile</span>
             </div> -->
             <div class="portfolio-links">
-              <a href="https://www.figma.com/proto/C7Q4LGsw1VOBqV82EMR14o/design_1?node-id=125-23&t=JdHPQpL1na56ZewG-1&starting-point-node-id=125%3A23&scaling=scale-down-width&content-scaling=fixed" class="portfolio-link">
+              <a href="https://www.figma.com/proto/C7Q4LGsw1VOBqV82EMR14o/design_1?node-id=125-23&t=JdHPQpL1na56ZewG-1&starting-point-node-id=125%3A23&scaling=scale-down-width&content-scaling=fixed"
+                class="portfolio-link">
                 <i class="fab fa-figma"></i>
                 Prototype
               </a>
@@ -930,7 +965,10 @@
           <div class="portfolio-content">
             <h3 class="portfolio-title">Vehicle Rental App</h3>
             <p class="portfolio-description">
-              This mobile application is designed to help tourists visiting Sri Lanka easily find and rent vehicles during their stay. It provides a simple, user-friendly interface where users can browse available cars, vans, bikes, and tuk-tuks listed by local owners. With features such as advanced search filters, vehicle details, location previews, and directtion.
+              This mobile application is designed to help tourists visiting Sri Lanka easily find and rent vehicles
+              during their stay. It provides a simple, user-friendly interface where users can browse available cars,
+              vans, bikes, and tuk-tuks listed by local owners. With features such as advanced search filters, vehicle
+              details, location previews, and directtion.
             </p>
             <!-- <div class="portfolio-tech">
               <span class="tech-tag">Next.js</span>
@@ -941,7 +979,7 @@
             <div class="portfolio-links">
               <a href="https://github.com/RavinduSperera/lego-car-rental-app-sri-lanka.git" class="portfolio-link">
                 <i class="fab fa-github"></i>
-                Source Code, prototype & APK 
+                Source Code, prototype & APK
               </a>
             </div>
           </div>
@@ -952,7 +990,7 @@
             <i class="fas fa-ban"></i>
           </div>
           <div class="portfolio-content">
-            <h3 class="portfolio-title">Upcomming Project 2</h3>
+            <h3 class="portfolio-title">Upcoming Project 2</h3>
             <p class="portfolio-description">
               Sorry!, not uploaded yet.
             </p>
@@ -976,7 +1014,7 @@
             <i class="fas fa-ban"></i>
           </div>
           <div class="portfolio-content">
-            <h3 class="portfolio-title">Upcomming Project 3</h3>
+            <h3 class="portfolio-title">Upcoming Project 3</h3>
             <p class="portfolio-description">
               Sorry!, not uploaded yet.
             </p>
@@ -1017,9 +1055,11 @@
           <h3>Follow Me</h3>
           <div class="social-links">
             <a href="https://github.com/RavinduSperera" class="social-link"><i class="fab fa-github"></i></a>
-            <a href="http://www.linkedin.com/in/ravindu-perera-b9a23829a" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="http://www.linkedin.com/in/ravindu-perera-b9a23829a" class="social-link"><i
+                class="fab fa-linkedin"></i></a>
             <a href="https://x.com/rvndu_" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/rvndu.perera/?next=%2F" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/rvndu.perera/?next=%2F" class="social-link"><i
+                class="fab fa-instagram"></i></a>
           </div>
         </div>
       </div>
@@ -1032,7 +1072,7 @@
   <script>
     // Vanta.js initialization
     let vantaEffect;
-    
+
     function initVanta() {
       if (typeof VANTA !== 'undefined') {
         if (vantaEffect) {
@@ -1061,21 +1101,21 @@
 
 
     // Initialize Vanta.js when the page loads
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Wait a bit to ensure all resources are loaded
       setTimeout(initVanta, 100);
     });
 
     // Reinitialize Vanta.js when theme changes
     const themeToggle = document.querySelector('.theme-toggle');
-    
+
     // Function to set theme
     function setTheme(isDark) {
       const html = document.documentElement;
       html.setAttribute('data-theme', isDark ? 'dark' : 'light');
       themeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      
+
       // Reinitialize Vanta.js after theme change
       setTimeout(initVanta, 300);
     }
@@ -1086,7 +1126,7 @@
     if (savedTheme) {
       setTheme(savedTheme === 'dark');
     }
-    
+
     themeToggle.addEventListener('click', () => {
       const html = document.documentElement;
       const isDark = html.getAttribute('data-theme') === 'dark';
@@ -1146,7 +1186,7 @@
       });
 
       showingAll = !showingAll;
-      
+
       if (showingAll) {
         seeMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> Show Less';
       } else {
@@ -1169,13 +1209,13 @@
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
+
       // Show a message (you can replace this with actual download logic)
       alert('Click OK to download');
     });
 
     // Handle window resize for Vanta.js
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', function () {
       if (vantaEffect) {
         vantaEffect.resize();
       }
@@ -1185,4 +1225,5 @@
     document.getElementById("currentYear").textContent = new Date().getFullYear();
   </script>
 </body>
+
 </html>

@@ -228,20 +228,20 @@
     .mobile-nav {
       display: none;
       position: absolute;
-      top: calc(100% + 10px);
-      /* Position just below the floating header */
+      top: 100%;
       left: 0;
       width: 100%;
-      background: var(--header-bg-floating);
-      /* Match header background */
-      backdrop-filter: blur(12px);
-      padding: 1rem;
-      z-index: 999;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+      background: var(--bg-primary);
+      /* Match header color exactly */
+      padding: 3rem 1rem 1rem 1rem;
+      /* Extra top padding for overlap */
+      z-index: -1;
+      /* Behind the header */
+      box-shadow: var(--shadow-lg);
       border-radius: 1.5rem;
-      /* Match curved style */
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      /* Subtle border */
+      border: none;
+      margin-top: -2rem;
+      /* Pull up to hide gap */
     }
 
     .mobile-nav.active {

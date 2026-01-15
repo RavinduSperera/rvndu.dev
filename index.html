@@ -227,15 +227,21 @@
 
     .mobile-nav {
       display: none;
-      position: fixed;
-      top: 70px;
+      position: absolute;
+      top: calc(100% + 10px);
+      /* Position just below the floating header */
       left: 0;
-      right: 0;
-      background: var(--bg-primary);
-      border-bottom: 1px solid var(--border-color);
+      width: 100%;
+      background: var(--header-bg-floating);
+      /* Match header background */
+      backdrop-filter: blur(12px);
       padding: 1rem;
       z-index: 999;
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+      border-radius: 1.5rem;
+      /* Match curved style */
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      /* Subtle border */
     }
 
     .mobile-nav.active {
@@ -253,13 +259,19 @@
       color: var(--text-secondary);
       text-decoration: none;
       font-weight: 500;
-      padding: 0.5rem;
+      padding: 0.75rem;
       display: block;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      text-align: center;
+      /* Center links */
+      border-radius: 1rem;
     }
 
     .mobile-nav-links a:hover {
       color: var(--accent-primary);
+      background: rgba(100, 149, 237, 0.1);
+      /* Subtle hover background */
+      transform: translateY(-2px);
     }
 
     /* Vanta Background Fixed */

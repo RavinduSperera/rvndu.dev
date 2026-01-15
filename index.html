@@ -374,7 +374,9 @@
     }
 
     .btn {
-      padding: 0.75rem 2rem;
+      padding: 0 2rem;
+      height: 3.5rem;
+      /* Fixed height with flex centering */
       border-radius: 0.75rem;
       /* Modern rounded box shape */
       font-weight: 500;
@@ -388,8 +390,6 @@
       /* Fixed minimum width for consistency */
       width: 220px;
       /* Enforce same width on desktop */
-      height: 3.25rem;
-      /* Enforce same height */
       justify-content: center;
       letter-spacing: 0.5px;
       white-space: nowrap;
@@ -865,7 +865,7 @@
         width: auto;
         /* Allow flex to control width on mobile */
         flex: 1;
-        padding: 0.75rem 0.5rem;
+        padding: 0 0.5rem;
         font-size: 0.95rem;
         white-space: nowrap;
         justify-content: center;
@@ -972,7 +972,7 @@
         </p>
         <div class="cta-buttons">
           <a href="#portfolio" class="btn btn-primary">
-            <i class="fas fa-briefcase"></i>
+            <i class="fas fa-laptop"></i>
             My Work
           </a>
           <a href="#about" class="btn btn-secondary">

@@ -12,8 +12,7 @@
     rel="stylesheet">
   <script src="https://kit.fontawesome.com/f7afb1ff73.js" crossorigin="anonymous"></script>
   <!-- Add Vanta.js scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
   <style>
     :root {
       --bg-primary: #ffffff;
@@ -27,26 +26,26 @@
       --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --border-color: #e2e8f0;
       --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
       --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
       --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --header-bg-floating: rgba(255, 255, 255, 0.8);
     }
 
     [data-theme="dark"] {
-      --bg-primary: #0f172a;
-      --bg-secondary: #1e293b;
-      --bg-card: #1e293b;
-      --text-primary: #f1f5f9;
-      --text-secondary: #cbd5e1;
-      --text-muted: #64748b;
+      --bg-primary: #121212;
+      --bg-secondary: #1c1c1c;
+      --bg-card: #1c1c1c;
+      --text-primary: #e5e5e5;
+      --text-secondary: #a3a3a3;
+      --text-muted: #737373;
       --accent-primary: #60a5fa;
       --accent-secondary: #3b82f6;
       --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --border-color: #334155;
+      --border-color: #262626;
       --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
       --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
       --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+      --header-bg-floating: rgba(18, 18, 18, 0.8);
     }
 
     * {
@@ -60,7 +59,17 @@
       background-color: var(--bg-primary);
       color: var(--text-primary);
       line-height: 1.6;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      /* Smoother global transition */
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    /* Apply smooth transition to all elements for theme switch */
+    *,
+    *::before,
+    *::after {
+      transition-property: background-color, background, color, border-color, text-decoration-color, fill, stroke;
+      transition-duration: 0.4s;
+      transition-timing-function: ease;
     }
 
     .container {
@@ -70,16 +79,36 @@
     }
 
     /* Header */
+    /* Header */
     header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: var(--bg-primary);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-color);
+      top: 1.5rem;
+      /* Space from top */
+      left: 50%;
+      /* Center horizontally */
+      transform: translateX(-50%);
+      /* Center horizontally */
+      width: 90%;
+      /* Width relative to viewport */
+      max-width: 1200px;
+      /* Max width */
+      background: rgba(255, 255, 255, 0.8);
+      /* Semi-transparent background */
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      /* Curved edges */
+      /* border-bottom: 1px solid var(--border-color); Removed as requested */
       z-index: 1000;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+      /* Initial shadow for floating effect */
+      padding: 0 1.5rem;
+      /* Internal padding */
+    }
+
+    [data-theme="dark"] header {
+      background: rgba(18, 18, 18, 0.8);
+      /* Dark mode semi-transparent */
     }
 
     .header-content {
@@ -234,7 +263,21 @@
     }
 
     /* Vanta Background Fixed */
-    #vanta-bg {
+    /* Scroll Mask to hide content above floating header */
+    .scroll-top-mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4rem;
+      background: linear-gradient(to bottom, var(--bg-primary) 30%, transparent 100%);
+      z-index: 900;
+      /* Above content (1), below header (1000) */
+      pointer-events: none;
+    }
+
+    /* Dotted Background Fixed */
+    .dotted-bg {
       position: fixed;
       top: 0;
       left: 0;
@@ -242,6 +285,21 @@
       height: 100vh;
       z-index: 0;
       pointer-events: none;
+      background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+      background-size: 30px 30px;
+      /* Adjust spacing as needed */
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    :root {
+      --dot-color: #aeb5bd;
+      /* Light mode dot color */
+    }
+
+    [data-theme="dark"] {
+      --dot-color: #333333;
+      /* Dark mode dot color */
     }
 
     /* Hero Section - Updated for Vanta.js */
@@ -256,17 +314,7 @@
       align-items: center;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 1;
-    }
+
 
     .hero-content {
       position: relative;
@@ -307,36 +355,47 @@
 
     .btn {
       padding: 0.75rem 2rem;
-      border-radius: 0.75rem;
-      font-weight: 600;
+      border-radius: 2rem;
+      /* Modern pill shape */
+      font-weight: 500;
+      /* Slightly lighter weight */
       text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      min-width: 200px;
+      /* Consistently apply the width fix */
+      justify-content: center;
+      letter-spacing: 0.5px;
     }
 
     .btn-primary {
       background: #6495ED;
       color: white;
-      box-shadow: var(--shadow-md);
+      box-shadow: none;
+      /* Remove shadow for flat look */
+      border: 1px solid transparent;
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shadow-xl);
+      opacity: 0.9;
+      box-shadow: 0 4px 12px rgba(100, 149, 237, 0.3);
+      /* Subtle colored shadow on hover only */
     }
 
     .btn-secondary {
-      background: var(--bg-card);
+      background: transparent;
       color: var(--text-primary);
       border: 1px solid var(--border-color);
     }
 
     .btn-secondary:hover {
       background: var(--bg-secondary);
+      border-color: var(--text-primary);
       transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
+      box-shadow: none;
     }
 
     /* Section Styles */
@@ -346,7 +405,7 @@
 
     .section-header {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 2rem;
     }
 
     .section-title {
@@ -421,21 +480,23 @@
       align-items: center;
       margin-top: 2rem;
       padding: 0.75rem 2rem;
-      border-radius: 0.75rem;
-      font-weight: 600;
+      border-radius: 2rem;
+      font-weight: 500;
       text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      background: var(--accent-primary);
+      transition: all 0.2s ease;
+      background: #6495ED;
+      /* Using hardcoded since var logic was reverted in user edits */
       color: white;
       border: none;
       cursor: pointer;
-      box-shadow: var(--shadow-md);
+      box-shadow: none;
+      letter-spacing: 0.5px;
     }
 
     .download-btn:hover {
-      background: var(--accent-secondary);
       transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
+      opacity: 0.9;
+      box-shadow: 0 4px 12px rgba(100, 149, 237, 0.3);
     }
 
     .download-btn i {
@@ -610,23 +671,24 @@
     }
 
     .see-more-btn button {
-      background: var(--bg-card);
-      color: var(--accent-primary);
-      border: 1px solid var(--border-color);
+      background: transparent;
+      color: #6495ED;
+      border: 1px solid #6495ED;
       padding: 0.75rem 2rem;
-      border-radius: 0.75rem;
-      font-weight: 600;
+      border-radius: 2rem;
+      font-weight: 500;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      letter-spacing: 0.5px;
     }
 
     .see-more-btn button:hover {
-      background: var(--bg-secondary);
+      background: rgba(100, 149, 237, 0.1);
       transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      box-shadow: none;
     }
 
     /* Footer */
@@ -705,12 +767,30 @@
         display: block;
       }
 
+      header {
+        width: 95%;
+        /* Spread out more on mobile */
+        padding: 0 1rem;
+      }
+
       .header-content {
-        justify-content: flex-start;
+        justify-content: space-between;
+        width: 100%;
       }
 
       .logo {
-        margin-right: auto;
+        margin-right: 0;
+        /* Remove auto margin to center properly with space-between */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1rem;
+        /* Further reduced size for mobile */
+      }
+
+      .theme-toggle {
+        transform: scale(0.85);
+        transform-origin: right center;
       }
 
       .hero {
@@ -720,8 +800,8 @@
       }
 
       .hero-description {
-        text-align: justify;
-        margin: 2rem;
+        text-align: center;
+        margin: 2rem 1rem;
       }
 
       .about-content {
@@ -729,10 +809,18 @@
         gap: 1rem;
       }
 
+      .section-header {
+        margin-bottom: 1.5rem;
+      }
+
       .about-text p {
-        text-align: justify;
-        margin-left: 2rem;
-        margin-right: 2rem;
+        text-align: center;
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+
+      p:not(.service-description):not(.portfolio-description) {
+        text-align: center;
       }
 
       .cta-buttons {
@@ -759,6 +847,11 @@
 
       .footer-bottom p {
         font-size: small;
+      }
+
+      .scroll-top-mask {
+        height: 8rem;
+        /* Increased mask height for mobile */
       }
     }
 
@@ -790,7 +883,8 @@
 </head>
 
 <body>
-  <div id="vanta-bg"></div>
+  <div class="dotted-bg"></div>
+  <div class="scroll-top-mask"></div>
   <header>
     <div class="container">
       <div class="header-content">
@@ -1131,41 +1225,7 @@
   </footer>
 
   <script>
-    // Vanta.js initialization
-    let vantaEffect;
 
-    function initVanta() {
-      if (typeof VANTA !== 'undefined') {
-        if (vantaEffect) {
-          vantaEffect.destroy();
-        }
-
-        // Detect current theme
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-
-        vantaEffect = VANTA.NET({
-          el: "#vanta-bg",
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: true,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 1.00,
-          scaleMobile: 1.00,
-          color: isDark ? 0x7e7e7e : 0xCBCBCB,         // net color (blackish on light theme)
-          backgroundColor: isDark ? 0x0f172a : 0xffffff, // background color changes
-          points: 10.00,
-          spacing: 30.00
-        });
-      }
-    }
-
-
-    // Initialize Vanta.js when the page loads
-    document.addEventListener('DOMContentLoaded', function () {
-      // Wait a bit to ensure all resources are loaded
-      setTimeout(initVanta, 100);
-    });
 
     // Reinitialize Vanta.js when theme changes
     const themeToggle = document.querySelector('.theme-toggle');
@@ -1178,8 +1238,7 @@
       themeIcon.className = isDark ? 'fas fa-circle' : 'fas fa-circle';
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
-      // Reinitialize Vanta.js after theme change
-      setTimeout(initVanta, 300);
+
     }
 
     // Load saved theme on page load
@@ -1222,16 +1281,23 @@
     });
 
     // Header scroll effect
-    window.addEventListener('scroll', () => {
+    function updateHeader() {
       const header = document.querySelector('header');
       if (window.scrollY > 100) {
-        header.style.background = 'var(--bg-primary)';
-        header.style.boxShadow = 'var(--shadow-md)';
+        header.style.background = 'var(--bg-primary)'; /* Solid background on scroll */
+        header.style.boxShadow = 'var(--shadow-lg)'; /* Stronger shadow on scroll */
+        header.style.transform = 'translateX(-50%) translateY(-5px)'; /* Slight lift on scroll */
       } else {
-        header.style.background = 'var(--bg-primary)';
-        header.style.boxShadow = 'none';
+        header.style.background = 'var(--header-bg-floating)'; /* Uses CSS variable for instant theme switch */
+        header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)'; /* Reset shadow */
+        header.style.transform = 'translateX(-50%)'; /* Reset lift */
       }
-    });
+    }
+
+    window.addEventListener('scroll', updateHeader);
+
+    // Initial call to set correct state
+    updateHeader();
 
     // Hamburger menu functionality
     const hamburger = document.querySelector('.hamburger');

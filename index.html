@@ -8,7 +8,7 @@
   <link rel="icon" type="images/jpeg" href="images/favicon.jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
     rel="stylesheet">
   <script src="https://kit.fontawesome.com/f7afb1ff73.js" crossorigin="anonymous"></script>
   <!-- Add Vanta.js scripts -->
@@ -16,15 +16,15 @@
   <style>
     :root {
       --bg-primary: #ffffff;
-      --bg-secondary: #f8fafc;
+      --bg-secondary: #f5f5f5;
       --bg-card: #ffffff;
-      --text-primary: #0f172a;
-      --text-secondary: #64748b;
-      --text-muted: #94a3b8;
-      --accent-primary: #3b82f6;
-      --accent-secondary: #1d4ed8;
-      --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --border-color: #e2e8f0;
+      --text-primary: #000000;
+      --text-secondary: #444444;
+      --text-muted: #777777;
+      --accent-primary: #000000;
+      --accent-secondary: #333333;
+      --accent-gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
+      --border-color: #e5e5e5;
       --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
       --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
       --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
@@ -32,20 +32,20 @@
     }
 
     [data-theme="dark"] {
-      --bg-primary: #121212;
-      --bg-secondary: #1c1c1c;
-      --bg-card: #1c1c1c;
-      --text-primary: #e5e5e5;
-      --text-secondary: #a3a3a3;
-      --text-muted: #737373;
-      --accent-primary: #60a5fa;
-      --accent-secondary: #3b82f6;
-      --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --border-color: #262626;
+      --bg-primary: #000000;
+      --bg-secondary: #121212;
+      --bg-card: #121212;
+      --text-primary: #ffffff;
+      --text-secondary: #aaaaaa;
+      --text-muted: #777777;
+      --accent-primary: #ffffff;
+      --accent-secondary: #cccccc;
+      --accent-gradient: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+      --border-color: #222222;
       --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
       --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
       --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
-      --header-bg-floating: rgba(18, 18, 18, 0.8);
+      --header-bg-floating: rgba(0, 0, 0, 0.8);
     }
 
     * {
@@ -55,7 +55,7 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
       background-color: var(--bg-primary);
       color: var(--text-primary);
       line-height: 1.6;
@@ -95,9 +95,9 @@
       background: rgba(255, 255, 255, 0.8);
       /* Semi-transparent background */
       backdrop-filter: blur(12px);
-      border-radius: 2rem;
-      /* Curved edges */
-      /* border-bottom: 1px solid var(--border-color); Removed as requested */
+      border-radius: 10px;
+      /* Slightly curved box type edges */
+      border: 1px solid var(--border-color);
       z-index: 1000;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
@@ -107,7 +107,7 @@
     }
 
     [data-theme="dark"] header {
-      background: rgba(18, 18, 18, 0.8);
+      background: rgba(0, 0, 0, 0.8);
       /* Dark mode semi-transparent */
     }
 
@@ -196,21 +196,21 @@
 
     .theme-toggle-slider i {
       font-size: 0.6rem;
-      color: #f59e0b;
+      color: #000000;
     }
 
     [data-theme="dark"] .theme-toggle {
-      background: #334155;
-      border-color: #475569;
+      background: #222222;
+      border-color: #333333;
     }
 
     [data-theme="dark"] .theme-toggle-slider {
       left: 30px;
-      background: #1e293b;
+      background: #000000;
     }
 
     [data-theme="dark"] .theme-toggle-slider i {
-      color: #60a5fa;
+      color: #ffffff;
     }
 
     /* Hamburger Menu */
@@ -237,8 +237,9 @@
       z-index: -1;
       /* Behind the header */
       box-shadow: var(--shadow-lg);
-      border-radius: 1.5rem;
-      border: none;
+      border-radius: 6px;
+      /* Slightly curved box type edges */
+      border: 1px solid var(--border-color);
       margin-top: 0.25rem;
       /* Thin line gap */
 
@@ -277,7 +278,7 @@
 
     .mobile-nav-links a:hover {
       color: var(--accent-primary);
-      background: rgba(100, 149, 237, 0.1);
+      background: var(--border-color);
       /* Subtle hover background */
       transform: translateY(-2px);
     }
@@ -346,7 +347,7 @@
       font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 800;
       margin-bottom: 1rem;
-      background: #6495ED;
+      background: var(--text-primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -377,10 +378,9 @@
       padding: 0 2rem;
       height: 3.5rem;
       /* Fixed height with flex centering */
-      border-radius: 0.75rem;
-      /* Modern rounded box shape */
-      font-weight: 500;
-      /* Slightly lighter weight */
+      border-radius: 0px;
+      /* Box shape */
+      font-weight: 600;
       text-decoration: none;
       transition: all 0.2s ease;
       display: inline-flex;
@@ -396,28 +396,28 @@
     }
 
     .btn-primary {
-      background: #6495ED;
-      color: white;
+      background: var(--text-primary);
+      color: var(--bg-primary);
       box-shadow: none;
       /* Remove shadow for flat look */
-      border: 1px solid transparent;
+      border: 2px solid var(--text-primary);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      opacity: 0.9;
-      box-shadow: 0 4px 12px rgba(100, 149, 237, 0.3);
-      /* Subtle colored shadow on hover only */
+      background: transparent;
+      color: var(--text-primary);
     }
 
     .btn-secondary {
       background: transparent;
       color: var(--text-primary);
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--text-primary);
     }
 
     .btn-secondary:hover {
-      background: var(--bg-secondary);
+      background: var(--text-primary);
+      color: var(--bg-primary);
       border-color: var(--text-primary);
       transform: translateY(-2px);
       box-shadow: none;
@@ -465,16 +465,16 @@
     }
 
     .about-text a {
-      text-decoration: none;
-      color: orangered;
+      text-decoration: underline;
+      color: var(--text-primary);
     }
 
     .about-text a:hover {
-      color: rgb(255, 114, 63);
+      opacity: 0.8;
     }
 
     .about-text span {
-      color: orangered;
+      color: var(--text-primary);
     }
 
     .skills-container {
@@ -509,14 +509,13 @@
       /* Larger padding */
       font-size: 1.1rem;
       /* Larger font */
-      border-radius: 0.75rem;
+      border-radius: 0px;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.2s ease;
-      background: #6495ED;
-      /* Blue color */
-      color: white;
-      border: none;
+      background: var(--text-primary);
+      color: var(--bg-primary);
+      border: 2px solid var(--text-primary);
       cursor: pointer;
       box-shadow: none;
       letter-spacing: 0.5px;
@@ -524,8 +523,8 @@
 
     .download-btn:hover {
       transform: translateY(-2px);
-      opacity: 0.9;
-      box-shadow: 0 4px 12px rgba(100, 149, 237, 0.3);
+      background: transparent;
+      color: var(--text-primary);
     }
 
     .download-btn i {
@@ -541,9 +540,9 @@
 
     .service-card {
       background: var(--bg-card);
-      padding: 2rem;
-      border-radius: 1.5rem;
-      border: 1px solid var(--border-color);
+      padding: 2.5rem 2rem;
+      border-radius: 10px;
+      border: 2px solid var(--border-color);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
@@ -556,7 +555,7 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: #6495ED;
+      background: var(--text-primary);
       transform: scaleX(0);
       transition: transform 0.3s ease;
     }
@@ -566,13 +565,14 @@
     }
 
     .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-xl);
+      border-color: var(--text-primary);
+      transform: translateY(-5px);
+      box-shadow: 6px 6px 0px var(--text-primary);
     }
 
     .service-icon {
       font-size: 2.5rem;
-      background: #6495ED;
+      background: var(--text-primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -591,32 +591,51 @@
     }
 
     /* Portfolio Section */
+    .portfolio-scroll-wrapper {
+      overflow-x: auto;
+      overflow-y: visible;
+      padding-bottom: 1.5rem;
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    .portfolio-scroll-wrapper:active {
+      cursor: grabbing;
+    }
+
+
+    /* Hide scrollbar but keep scroll functionality */
+    .portfolio-scroll-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
     .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      display: flex;
+      flex-direction: row;
       gap: 2rem;
+      width: max-content;
     }
 
     .portfolio-card {
       background: var(--bg-card);
-      border-radius: 1.5rem;
+      border-radius: 10px;
       overflow: hidden;
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
-    }
-
-    .portfolio-hidden {
-      display: none;
+      width: 360px;
+      flex-shrink: 0;
     }
 
     .portfolio-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-xl);
+      opacity: 0.85;
+      transform: scale(0.98);
     }
 
     .portfolio-image {
-      height: 200px;
+      height: 240px;
       background: var(--accent-gradient);
       display: flex;
       align-items: center;
@@ -627,23 +646,19 @@
       overflow: hidden;
     }
 
-    .portfolio-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
+    .portfolio-image img {
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.6s ease;
+      object-fit: cover;
+      display: block;
     }
 
-    .portfolio-card:hover .portfolio-image::before {
-      left: 100%;
-    }
 
     .portfolio-content {
       padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .portfolio-title {
@@ -656,7 +671,8 @@
       color: var(--text-secondary);
       margin-bottom: 1.5rem;
       line-height: 1.6;
-      text-align: justify;
+      text-align: left;
+      flex: 1;
     }
 
     .portfolio-tech {
@@ -678,47 +694,31 @@
     .portfolio-links {
       display: flex;
       gap: 1rem;
+      justify-content: flex-end;
     }
 
     .portfolio-link {
-      color: var(--accent-primary);
+      color: var(--text-primary);
       text-decoration: none;
-      font-weight: 500;
-      display: flex;
+      font-weight: 600;
+      display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
-      transition: color 0.3s ease;
+      padding: 0.6rem 1.25rem;
+      border: 2px solid var(--text-primary);
+      border-radius: 0px;
+      background: transparent;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
     }
 
     .portfolio-link:hover {
-      color: var(--accent-secondary);
+      background: var(--text-primary);
+      color: var(--bg-primary);
     }
 
-    .see-more-btn {
-      margin-top: 2rem;
-      text-align: center;
-    }
 
-    .see-more-btn button {
-      background: transparent;
-      color: #6495ED;
-      border: 1px solid #6495ED;
-      padding: 0.75rem 2rem;
-      border-radius: 0.75rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      letter-spacing: 0.5px;
-    }
-
-    .see-more-btn button:hover {
-      background: rgba(100, 149, 237, 0.1);
-      transform: translateY(-2px);
-      box-shadow: none;
-    }
 
     /* Footer */
     footer {
@@ -774,7 +774,7 @@
 
     .social-link:hover {
       background: var(--accent-primary);
-      color: white;
+      color: var(--bg-primary);
       transform: translateY(-2px);
       transition: 300ms;
       /* add transition time to make the effect smoother */
@@ -871,9 +871,12 @@
         justify-content: center;
       }
 
-      .portfolio-grid,
       .services-grid {
         grid-template-columns: 1fr;
+      }
+
+      .portfolio-card {
+        width: 300px;
       }
 
       section {
@@ -961,6 +964,7 @@
   </header>
 
   <section id="hero" class="hero">
+    <canvas id="hero-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;"></canvas>
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">UI/UX Engineer</h1>
@@ -1077,17 +1081,17 @@
           A showcase of my recent work and technical expertise
         </p>
       </div>
+      <div class="portfolio-scroll-wrapper">
       <div class="portfolio-grid">
         <!-- First 3 projects (visible by default) -->
         <div class="portfolio-card">
           <div class="portfolio-image">
-            <img src="images/bubble.png" style="width: 30rem; height: 20rem;"> <!--added mockup here-->
+            <img src="images/bubble.png"> <!--added mockup here-->
           </div>
           <div class="portfolio-content">
-            <h3 class="portfolio-title">Property Buy & Sell Web App</h3>
+            <h3 class="portfolio-title">Property Buy & Sell App</h3>
             <p class="portfolio-description">
-              A clean, modern real estate interface that helps users search, explore, and connect with property listings
-              using intuitive navigation and vibrant blue accents.
+              A modern real estate UI for searching and exploring property listings with intuitive navigation.
             </p>
             <!-- <div class="portfolio-tech">
               <span class="tech-tag">Figma</span>
@@ -1104,13 +1108,12 @@
 
         <div class="portfolio-card">
           <div class="portfolio-image">
-            <img src="images/travel_app.png" style="width: 30rem; height: 20rem;"> <!--added mockup here-->
+            <img src="images/travel_app.png"> <!--added mockup here-->
           </div>
           <div class="portfolio-content">
             <h3 class="portfolio-title">Trip Planner Mobile App</h3>
             <p class="portfolio-description">
-              A minimalist travel companion app that helps users discover destinations and navigate using an elegant
-              blue gradient theme and friendly visuals. This still in under design phase.
+              A minimalist travel companion app for discovering destinations, currently in the design phase.
             </p>
             <!-- <div class="portfolio-tech">
               <span class="tech-tag">Java</span>
@@ -1128,45 +1131,15 @@
           </div>
         </div>
 
+        <!-- Additional projects -->
         <div class="portfolio-card">
           <div class="portfolio-image">
-            <img src="images/Olee.png" style="width: 30rem; height: 20rem;">
-          </div>
-          <div class="portfolio-content">
-            <h3 class="portfolio-title">Olee Officail site Redesign</h3>
-            <p class="portfolio-description">
-              A bold, modern landing page for an AI-innovator, featuring a dark-to-light gradient backdrop, crisp
-              typography, and clear sections describing “Visioning → Thinking → Creating → Automating” to reflect the
-              company’s end-to-end AI solution pipeline.
-            </p>
-            <!-- <div class="portfolio-tech">
-              <span class="tech-tag">Flutter</span>
-              <span class="tech-tag">Dart</span>
-              <span class="tech-tag">SQLite</span>
-              <span class="tech-tag">Mobile</span>
-            </div> -->
-            <div class="portfolio-links">
-              <a href="https://www.figma.com/proto/C7Q4LGsw1VOBqV82EMR14o/design_1?node-id=125-23&t=JdHPQpL1na56ZewG-1&starting-point-node-id=125%3A23&scaling=scale-down-width&content-scaling=fixed"
-                class="portfolio-link">
-                <i class="fab fa-figma"></i>
-                Prototype
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Additional projects (hidden by default) -->
-        <div class="portfolio-card portfolio-hidden">
-          <div class="portfolio-image">
-            <img src="images/lego.png" style="width: 30rem; height: 20rem;">
+            <img src="images/lego.png">
           </div>
           <div class="portfolio-content">
             <h3 class="portfolio-title">Vehicle Rental App</h3>
             <p class="portfolio-description">
-              This mobile application is designed to help tourists visiting Sri Lanka easily find and rent vehicles
-              during their stay. It provides a simple, user-friendly interface where users can browse available cars,
-              vans, bikes, and tuk-tuks listed by local owners. With features such as advanced search filters, vehicle
-              details, location previews, and directtion.
+              A mobile app helping tourists in Sri Lanka browse and rent vehicles with search filters and location previews.
             </p>
             <!-- <div class="portfolio-tech">
               <span class="tech-tag">Next.js</span>
@@ -1177,66 +1150,13 @@
             <div class="portfolio-links">
               <a href="https://github.com/RavinduSperera/lego-car-rental-app-sri-lanka.git" class="portfolio-link">
                 <i class="fab fa-github"></i>
-                Source Code, prototype & APK
+                Github Link
               </a>
             </div>
           </div>
         </div>
 
-        <div class="portfolio-card portfolio-hidden">
-          <div class="portfolio-image">
-            <i class="fas fa-ban"></i>
-          </div>
-          <div class="portfolio-content">
-            <h3 class="portfolio-title">Upcoming Project 2</h3>
-            <p class="portfolio-description">
-              Sorry!, not uploaded yet.
-            </p>
-            <!-- <div class="portfolio-tech">
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">D3.js</span>
-              <span class="tech-tag">Firebase</span>
-              <span class="tech-tag">Redux</span>
-            </div> -->
-            <!-- <div class="portfolio-links">
-              <a href="#" class="portfolio-link">
-                <i class="fab fa-github"></i>
-                Source Code
-              </a>
-            </div> -->
-          </div>
-        </div>
-
-        <div class="portfolio-card portfolio-hidden">
-          <div class="portfolio-image">
-            <i class="fas fa-ban"></i>
-          </div>
-          <div class="portfolio-content">
-            <h3 class="portfolio-title">Upcoming Project 3</h3>
-            <p class="portfolio-description">
-              Sorry!, not uploaded yet.
-            </p>
-            <!-- <div class="portfolio-tech">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">TensorFlow</span>
-              <span class="tech-tag">Flask</span>
-              <span class="tech-tag">NLP</span>
-            </div> -->
-            <!-- <div class="portfolio-links">
-              <a href="#" class="portfolio-link">
-                <i class="fab fa-github"></i>
-                Source Code
-              </a>
-            </div> -->
-          </div>
-        </div>
       </div>
-
-      <div class="see-more-btn">
-        <button id="seeMoreBtn">
-          <i class="fas fa-chevron-down"></i>
-          See More Projects
-        </button>
       </div>
     </div>
   </section>
@@ -1355,29 +1275,29 @@
       }
     });
 
-    // See More button functionality
-    const seeMoreBtn = document.getElementById('seeMoreBtn');
-    const hiddenProjects = document.querySelectorAll('.portfolio-hidden');
-    let showingAll = false;
+    // Drag-to-scroll for portfolio
+    (function() {
+      const wrapper = document.querySelector('.portfolio-scroll-wrapper');
+      if (!wrapper) return;
+      let isDown = false;
+      let startX;
+      let scrollLeft;
 
-    seeMoreBtn.addEventListener('click', () => {
-      hiddenProjects.forEach(project => {
-        project.classList.toggle('portfolio-hidden');
+      wrapper.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - wrapper.offsetLeft;
+        scrollLeft = wrapper.scrollLeft;
       });
-
-      showingAll = !showingAll;
-
-      if (showingAll) {
-        seeMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> Show Less';
-      } else {
-        seeMoreBtn.innerHTML = '<i class="fas fa-chevron-down"></i> See More Projects';
-      }
-
-      // Smooth scroll to maintain position
-      setTimeout(() => {
-        seeMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 100);
-    });
+      wrapper.addEventListener('mouseleave', () => { isDown = false; });
+      wrapper.addEventListener('mouseup', () => { isDown = false; });
+      wrapper.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - wrapper.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        wrapper.scrollLeft = scrollLeft - walk;
+      });
+    })();
 
     // Download CV button functionality
     const downloadCvBtn = document.getElementById('downloadCv');
@@ -1396,10 +1316,110 @@
 
     // Handle window resize for Vanta.js
     window.addEventListener('resize', function () {
-      if (vantaEffect) {
+      if (typeof vantaEffect !== 'undefined' && vantaEffect) {
         vantaEffect.resize();
       }
     });
+
+    // Interactive Hero Geometric Grid Canvas
+    (function() {
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const heroSection = document.getElementById('hero');
+
+      let width = canvas.width = heroSection.offsetWidth;
+      let height = canvas.height = heroSection.offsetHeight;
+
+      const numPoints = 75;
+      const points = [];
+      const maxDistance = 120;
+      let mouse = { x: null, y: null };
+
+      for (let i = 0; i < numPoints; i++) {
+        points.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          radius: Math.random() * 2 + 1
+        });
+      }
+
+      heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+
+      heroSection.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      window.addEventListener('resize', () => {
+        if (heroSection) {
+          width = canvas.width = heroSection.offsetWidth;
+          height = canvas.height = heroSection.offsetHeight;
+        }
+      });
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const colorVal = isDark ? 255 : 0;
+
+        points.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${colorVal}, ${colorVal}, ${colorVal}, 0.25)`;
+          ctx.fill();
+        });
+
+        for (let i = 0; i < points.length; i++) {
+          for (let j = i + 1; j < points.length; j++) {
+            const pi = points[i];
+            const pj = points[j];
+            const dist = Math.hypot(pi.x - pj.x, pi.y - pj.y);
+
+            if (dist < maxDistance) {
+              const alpha = (1 - dist / maxDistance) * 0.12;
+              ctx.beginPath();
+              ctx.moveTo(pi.x, pi.y);
+              ctx.lineTo(pj.x, pj.y);
+              ctx.strokeStyle = `rgba(${colorVal}, ${colorVal}, ${colorVal}, ${alpha})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+
+          if (mouse.x !== null && mouse.y !== null) {
+            const pi = points[i];
+            const distToMouse = Math.hypot(pi.x - mouse.x, pi.y - mouse.y);
+            if (distToMouse < maxDistance * 1.5) {
+              const alpha = (1 - distToMouse / (maxDistance * 1.5)) * 0.22;
+              ctx.beginPath();
+              ctx.moveTo(pi.x, pi.y);
+              ctx.lineTo(mouse.x, mouse.y);
+              ctx.strokeStyle = `rgba(${colorVal}, ${colorVal}, ${colorVal}, ${alpha})`;
+              ctx.lineWidth = 0.9;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
 
     // updating year - footer section
     document.getElementById("currentYear").textContent = new Date().getFullYear();

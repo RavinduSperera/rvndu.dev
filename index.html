@@ -865,8 +865,9 @@
         width: auto;
         /* Allow flex to control width on mobile */
         flex: 1;
-        padding: 0 0.5rem;
-        font-size: 0.95rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        min-height: 56px; /* ensure comfortable touch size on small/medium screens */
         white-space: nowrap;
         justify-content: center;
       }
@@ -898,6 +899,37 @@
       .scroll-top-mask {
         height: 8rem;
         /* Increased mask height for mobile */
+      }
+    }
+
+    /* Reduce dotted background density on smaller screens */
+    @media (max-width: 768px) {
+      .dotted-bg {
+        background-size: 45px 45px; /* fewer dots */
+        opacity: 0.5; /* make them less prominent */
+        mask-image: linear-gradient(to bottom, var(--bg-primary) 30%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, var(--bg-primary) 30%, transparent 100%);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .dotted-bg {
+        display: none; /* hide on very small screens for clarity */
+      }
+      /* Stack CTA buttons vertically on small/mobile screens */
+      .cta-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+      }
+
+      .cta-buttons .btn {
+        width: 100%;
+        justify-content: center;
+        height: auto;
+        min-height: 56px; /* ensure comfortable touch size */
+        padding: 0.75rem 1rem; /* slightly larger horizontal padding */
+        font-size: 1rem; /* improve readability on small screens */
       }
     }
 
@@ -968,15 +1000,15 @@
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">UI/UX Engineer</h1>
-        <p class="hero-subtitle">Design Digital Experiences</p>
-        <p class="hero-description">
+        <p class="hero-subtitle">Convert Ideas into Digital Experiences</p>
+        <!-- <p class="hero-description">
           As a passionate design enthusiast, I focus on crafting visually appealing and intuitive interfaces while
           bringing them to life through responsive frontend development. I enjoy combining aesthetics, usability, and
           performance in every project I create.
-        </p>
+        </p> -->
         <div class="cta-buttons">
           <a href="#portfolio" class="btn btn-primary">
-            <i class="fas fa-laptop"></i>
+            <i class="fas fa-briefcase"></i>
             My Work
           </a>
           <a href="#about" class="btn btn-secondary">

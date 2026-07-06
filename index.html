@@ -15,37 +15,51 @@
 
   <style>
     :root {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f5f5f5;
+      --bg-primary: #f7f7f9;
+      --bg-secondary: #f1f1f5;
       --bg-card: #ffffff;
-      --text-primary: #000000;
-      --text-secondary: #444444;
-      --text-muted: #777777;
-      --accent-primary: #000000;
-      --accent-secondary: #333333;
-      --accent-gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
-      --border-color: #e5e5e5;
-      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-      --header-bg-floating: rgba(255, 255, 255, 0.8);
+      --text-primary: #111111;
+      --text-secondary: #4f4f5c;
+      --text-muted: #6d6d7f;
+      --accent-primary: #111111;
+      --accent-secondary: #5b5b68;
+      --accent-gradient: linear-gradient(135deg, #111111 0%, #5b5b68 100%);
+      --border-color: transparent;
+      --toggle-bg: #e8e8ee;
+      --toggle-border: #c8c8d3;
+      --toggle-handle: #ffffff;
+      --toggle-icon: #4f4f5c;
+      --shadow-sm: 0 10px 30px -20px rgba(17, 17, 17, 0.12);
+      --shadow-lg: 0 24px 80px -32px rgba(17, 17, 17, 0.16);
+      --shadow-xl: 0 32px 120px -40px rgba(17, 17, 17, 0.14);
+      --header-bg-floating: rgba(255, 255, 255, 0.76);
+      --dropdown-bg: #ffffff;
+      --dropdown-border: rgba(17, 17, 17, 0.08);
+      --dropdown-hover: rgba(17, 17, 17, 0.06);
     }
 
     [data-theme="dark"] {
-      --bg-primary: #000000;
-      --bg-secondary: #121212;
-      --bg-card: #121212;
-      --text-primary: #ffffff;
-      --text-secondary: #aaaaaa;
-      --text-muted: #777777;
-      --accent-primary: #ffffff;
-      --accent-secondary: #cccccc;
-      --accent-gradient: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
-      --border-color: #222222;
-      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
-      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
-      --header-bg-floating: rgba(0, 0, 0, 0.8);
+      --bg-primary: #09090b;
+      --bg-secondary: #111214;
+      --bg-card: #14181c;
+      --text-primary: #f5f5f7;
+      --text-secondary: #c4c7cf;
+      --text-muted: #8f94a5;
+      --accent-primary: #f5f5f7;
+      --accent-secondary: #9da3b5;
+      --accent-gradient: linear-gradient(135deg, #f5f5f7 0%, #9da3b5 100%);
+      --border-color: transparent;
+      --toggle-bg: #222222;
+      --toggle-border: #333333;
+      --toggle-handle: #000000;
+      --toggle-icon: #ffffff;
+      --shadow-sm: 0 10px 30px -20px rgba(0, 0, 0, 0.35);
+      --shadow-lg: 0 24px 80px -32px rgba(0, 0, 0, 0.4);
+      --shadow-xl: 0 32px 120px -40px rgba(0, 0, 0, 0.38);
+      --header-bg-floating: rgba(12, 14, 18, 0.88);
+      --dropdown-bg: #111214;
+      --dropdown-border: rgba(255, 255, 255, 0.12);
+      --dropdown-hover: rgba(255, 255, 255, 0.08);
     }
 
     * {
@@ -61,6 +75,35 @@
       line-height: 1.6;
       /* Smoother global transition */
       transition: background-color 0.4s ease, color 0.4s ease;
+      scrollbar-width: thin;
+      scrollbar-color: var(--text-secondary) transparent;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--text-secondary);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: content-box;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-primary);
+      background-clip: content-box;
+    }
+
+    ::-webkit-scrollbar-button {
+      display: none;
+      width: 0;
+      height: 0;
     }
 
     /* Apply smooth transition to all elements for theme switch */
@@ -83,32 +126,22 @@
     header {
       position: fixed;
       top: 1.5rem;
-      /* Space from top */
       left: 50%;
-      /* Center horizontally */
       transform: translateX(-50%);
-      /* Center horizontally */
       width: 90%;
-      /* Width relative to viewport */
       max-width: 1200px;
-      /* Max width */
-      background: rgba(255, 255, 255, 0.8);
-      /* Semi-transparent background */
-      backdrop-filter: blur(12px);
-      border-radius: 10px;
-      /* Slightly curved box type edges */
-      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      border-radius: 18px;
+      border: 0;
       z-index: 1000;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
-      /* Initial shadow for floating effect */
+      box-shadow: var(--shadow-sm);
       padding: 0 1.5rem;
-      /* Internal padding */
     }
 
     [data-theme="dark"] header {
-      background: rgba(0, 0, 0, 0.8);
-      /* Dark mode semi-transparent */
+      background: rgba(20, 24, 28, 0.95);
     }
 
     .header-content {
@@ -164,15 +197,34 @@
       position: relative;
       width: 60px;
       height: 30px;
-      background: var(--border-color);
+      background: var(--toggle-bg);
       border-radius: 15px;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 2px solid var(--border-color);
+      border: 2px solid var(--toggle-border);
       display: flex;
       align-items: center;
       padding: 0;
       overflow: hidden;
+    }
+
+    .theme-toggle-slider {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: var(--toggle-handle);
+      border-radius: 50%;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      left: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    }
+
+    .theme-toggle-slider i {
+      font-size: 0.6rem;
+      color: var(--toggle-icon);
     }
 
     .theme-toggle:hover {
@@ -230,7 +282,7 @@
       top: 100%;
       left: 0;
       width: 100%;
-      background: var(--bg-primary);
+      background: var(--dropdown-bg);
       /* Match header color exactly */
       padding: 1rem;
       /* Standard padding */
@@ -239,7 +291,7 @@
       box-shadow: var(--shadow-lg);
       border-radius: 6px;
       /* Slightly curved box type edges */
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--dropdown-border);
       margin-top: 0.25rem;
       /* Thin line gap */
 
@@ -278,7 +330,7 @@
 
     .mobile-nav-links a:hover {
       color: var(--accent-primary);
-      background: var(--border-color);
+      background: var(--dropdown-hover);
       /* Subtle hover background */
       transform: translateY(-2px);
     }
@@ -541,11 +593,12 @@
     .service-card {
       background: var(--bg-card);
       padding: 2.5rem 2rem;
-      border-radius: 10px;
-      border: 2px solid var(--border-color);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 0;
+      border: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
       position: relative;
       overflow: hidden;
+      box-shadow: var(--shadow-sm);
     }
 
     .service-card::before {
@@ -558,6 +611,7 @@
       background: var(--text-primary);
       transform: scaleX(0);
       transition: transform 0.3s ease;
+      opacity: 0.12;
     }
 
     .service-card:hover::before {
@@ -565,9 +619,8 @@
     }
 
     .service-card:hover {
-      border-color: var(--text-primary);
-      transform: translateY(-5px);
-      box-shadow: 6px 6px 0px var(--text-primary);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
     }
 
     .service-icon {
@@ -620,18 +673,20 @@
 
     .portfolio-card {
       background: var(--bg-card);
-      border-radius: 10px;
+      border-radius: 0;
       overflow: hidden;
-      border: 2px solid var(--border-color);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
       position: relative;
       width: 360px;
       flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
     }
 
     .portfolio-card:hover {
-      opacity: 0.85;
-      transform: scale(0.98);
+      opacity: 1;
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
     }
 
     .portfolio-image {
@@ -999,8 +1054,8 @@
     <canvas id="hero-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;"></canvas>
     <div class="container">
       <div class="hero-content">
-        <h1 class="hero-title">UI/UX Engineer</h1>
-        <p class="hero-subtitle">Convert Ideas into Digital Experiences</p>
+        <h1 class="hero-title">PIXELS TO PRODUCTS</h1>
+        <p class="hero-subtitle">Turning ideas into intuitive, functional interfaces</p>
         <!-- <p class="hero-description">
           As a passionate design enthusiast, I focus on crafting visually appealing and intuitive interfaces while
           bringing them to life through responsive frontend development. I enjoy combining aesthetics, usability, and
@@ -1279,12 +1334,12 @@
     function updateHeader() {
       const header = document.querySelector('header');
       if (window.scrollY > 100) {
-        header.style.background = 'var(--bg-primary)'; /* Solid background on scroll */
+        header.style.background = 'var(--bg-card)'; /* Solid background on scroll */
         header.style.boxShadow = 'var(--shadow-lg)'; /* Stronger shadow on scroll */
         header.style.transform = 'translateX(-50%) translateY(-5px)'; /* Slight lift on scroll */
       } else {
         header.style.background = 'var(--header-bg-floating)'; /* Uses CSS variable for instant theme switch */
-        header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)'; /* Reset shadow */
+        header.style.boxShadow = 'var(--shadow-sm)'; /* Reset shadow */
         header.style.transform = 'translateX(-50%)'; /* Reset lift */
       }
     }
